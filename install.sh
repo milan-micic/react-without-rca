@@ -3,23 +3,29 @@
 echo "Kreiran package.json fajl"
 cat << EOF > package.json
 {
-  "name": "react",
+  "name": "new-react-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A new react app without CRA",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server .",
     "build": "webpack .",
-    "test": "test"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "jest": {
+    "testEnvironment": "jsdom",
+    "globals": {
+      "IS_REACT_ACT_ENVIRONMENT": true
+    }
+  }
 }
 EOF
 
 echo "Instaliranje paketa webpack babel eslint path react"
-npm i --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/runtime @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier path
+npm i --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/runtime @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier path jest-environment-jsdom
 echo "Instaliranje React paketa"
 npm i react react-dom
 
