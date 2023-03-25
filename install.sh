@@ -24,7 +24,7 @@ cat << EOF > package.json
 }
 EOF
 
-echo "Instaliranje paketa webpack babel eslint path react"
+echo "Instaliranje paketa webpack babel eslint path jest"
 npm i --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/runtime @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier path jest-environment-jsdom
 echo "Instaliranje React paketa"
 npm i react react-dom
@@ -61,6 +61,26 @@ const App = () =>{
 }
 
 export default App
+EOF
+
+echo "Kreiran src/App.test.js fajl"
+cat << EOF > src/App.test.js
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { act } from 'react-dom/test-utils'
+import App from './App'
+
+describe('All installs and settings work', () => {
+  it('render app title', () => {
+    const component = <App />
+    const container = document.createElement('div')
+    document.body.appendChild(container)
+
+    act(() => ReactDOM.createRoot(container).render(component))
+
+    expect(document.body.textContent).toContain('React')
+  })
+})
 EOF
 
 echo "Kreiran index.js fajl"
