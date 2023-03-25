@@ -17,3 +17,9 @@ Change _mode_ in __webpack.config.js__
 ```js
 mode: "production"
 ```
+## Testing
+
+> ***Warning!!!***  
+  i'm using `act`, if you don't need remove that part from the end of `package.json` file and change import in `src/App.test.js`.
+  
+  Install `@testing-library/react` if you need it.
